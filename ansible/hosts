@@ -1,0 +1,8 @@
+[terraform:vars]
+ansible_user=centos
+ansible_ssh_private_key_file=../learn-terraform-aws-instance/ssh/id_rsa_deploy
+ansible_port=22
+ansible_python_interpreter=python3
+
+[terraform]
+3.144.220.56

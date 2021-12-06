@@ -1,0 +1,29 @@
+# ansible-playbook playbookNameFile.yml -i InventoryName
+- name: installation httpd (Apache)
+  # use packages until yum
+  yum:
+    name: httpd
+    state: latest
+
+- name: pre-copy index.html
+  debug:
+    msg: 'COPY index.html'
+
+- name: copy files/html to var/www/html
+  copy: 
+    src: index.html
+    dest: /var/www/html/index.html
+
+- name: restart httpd
+  shell: systemctl restart httpd
+
+- name: virtualhost
+  template: 
+    src: virtualHost.conf.j2 
+    dest: /etc/httpd/conf.d/virtual.conf
+
+- name: Remplace port 80 par 8080 
+  lineinfile:
+    path: /etc/httpd/conf/httpd.conf
+    regexp: '^Listen 80'
+    line: Listen 8080

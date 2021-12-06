@@ -1,0 +1,21 @@
+#cloud-config
+
+# installation des packets que nous avons besoins
+packages: 
+  - pyhton3
+
+# initialisation du groupe
+groups:
+  - deploy
+
+
+# Création de l'utilisateur et de sa clefs SSH
+users:
+  - name: deploy
+    gecos: terraform
+    primary_group: hashicorp
+    sudo: ALL=(ALL) NOPASSWD:ALL
+    primary-group: deploy
+    lock_passwd: false
+    ssh_authorized_keys: 
+      - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQC1/ou7HfKuwQY7WloMdk/789PDiHUgJU3tlZMZEXmpVw0Qrs8u02FrZYwyIQTfAxlcnkAvuocKWQYN297qRGgriufrubBpg/jrdQWnlwcg/inGbRS7ScuLdhGFIAX3g1rofDc1UQN8uRTRwkTWl7WgD9o1ZD9XkpiRZk+DFrsHVm+/IOA/gMqbrHOH2RBeqvmTfFBtdoqPkKtgVc+OJapwp5h4pp5s6t9CNPbtxYoW7Q+v/rOIDLBjoZMImWHhy2BaD6ib1a3KtaHI5TKRCiRYVG8w/Jh+I0mx6K+bCzTiN87KTByVohNFoIp6Y9oV0dvK4M9K9Ga6MYxpLp/KTnuSo0yllV/aC4CrwjVQmfYzWShKZR2V+oKWai415z/6KjiRSuiy4WzyUlKzzcQccRtV63vWsb1m82jQ+sxa0jl6KYPh0XOUN8M/fOCF7BUClufku2Dj42tFqfXYZO3R5+WP3RusDJVQ1sdAXHtVlE1N2eBBYd8Redw/dgb8l57KELE= lucien.richer@icloud.com
